@@ -1,0 +1,19 @@
+{
+  "name": "iochat",
+  "version": "1.0.0",
+  "description": "Simple Chat App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error:no test specified"
+  },
+  "author": "KAMBREEZY",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "*",
+    "express": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Simple chat app"
+  }
+}

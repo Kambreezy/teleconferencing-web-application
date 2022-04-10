@@ -1,0 +1,145 @@
+.titleContainer{
+	width:100%;
+	height: 250px;
+	background-color: rgb(255,0,0);
+	text-align:center;
+	font-size:60px;
+	color:rgb(255,255,255);
+	font-family: Century Gothic;
+	font-weight:700;
+	transform: skewY(0deg);
+	overflow: hidden;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.titleStyle{
+width:100%;
+height:300px;
+background-color: rgb(0,0,0);
+text-align: center;
+padding-top: 90px;
+transform: skewY(-30deg);
+}
+
+.titleStyle p{
+	transform: skewY(30deg);
+}
+.navbar{
+	margin-top: 0px;
+	width:100%;
+	display: inline-block;
+	text-align:right;
+	padding: 20px;
+    font-family: Century Gothic;
+	height:40px;
+	color: rgb(255,255,255);
+	cursor: pointer;
+
+}
+.navbar ul li{
+	display: inline-block;
+}
+.navbar ul li a{
+	text-decoration: none;
+	color:rgb(255,255,255);
+}
+.navbar ul li a:hover{
+	color: rgb(255,0,0);
+}
+
+.videoArea{
+	width:100%;
+	height:auto;
+	height: 500px;
+	background-color: rgb(255,255,255);
+	border-radius: 30px 30px 30px 30px;
+	text-align:center;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	cursor: pointer;
+}
+.videoAreaOverlay{
+	background-color: rgb(255,0,0);
+	text-align: center;
+	width:100%;
+	height:100px;
+	font-size: 18px;
+	font-family: Century Gothic;
+	margin-top: 300px;
+	color:rgb(255,255,255);
+	padding-top: 30px;
+}
+.footing{
+	color: rgb(255,255,255);
+	text-align: center;
+	height:40px;
+	padding-top: 10px;
+	font-family:Century Gothic;
+	font-size: 13px;
+	cursor: pointer;
+}
+.Username{
+	font-size:20px;
+	color:rgb(0,0,0);
+	position: center;
+	margin-top: 30px;
+	font-family: Century Gothic;
+	width:relative;
+	margin-bottom: 20px;
+}
+.Username textarea{
+	text-align:center;
+	background-color: rgb(255,255,255);
+	color:rgb(0,0,0);
+	border-radius:10px 10px 10px 10px;
+	font-size:15px;
+}
+.Username:hover{
+	color:rgb(255,0,0);
+}
+.Friend{
+	font-size:20px;
+	color:rgb(0,0,0);
+	position: center;
+	font-family: Century Gothic;
+	width:relative;
+	margin-bottom: 10px;
+}
+.Friend textarea {
+	text-align:center;
+	background-color: rgb(255,255,255);
+	color:rgb(0,0,0);
+	border-radius:10px 10px 10px 10px;
+	font-size:15px;
+}
+.Friend:hover{
+	color:rgb(255,0,0);
+}
+.Connect{
+	width:relative;
+	height:40px;
+	border:4px solid silver;
+	border-radius:40px 40px 40px 40px;
+	background-color: rgb(0,0,0);
+	color:rgb(255,255,255);
+	margin-top: 30px;
+	text-align: center;
+	font-size:15px;
+	font-family:Century Gothic;
+	padding-top: 5px;
+
+
+}
+.Connect:hover{
+	color: rgb(0,0,0);
+	background-color:rgb(206,103,0);
+	border: 2px solid silver;
+	font-size:18px;
+}

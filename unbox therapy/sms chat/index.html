@@ -1,0 +1,384 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0.1 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>homepage</title>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<style>
+body{
+	height:auto;
+	width:relative;
+	background-image:url('https://cdn.wallpapersafari.com/60/76/AfpFgb.jpg');
+	background-size:cover;
+	position:center;
+}
+.jumbotron{
+	background-color:rgb(255,255,255);
+	box-shadow:0px 0px 5px 1px rgb(0,0,0);
+	text-align:center;
+	font-family:Century Gothic;
+	color:rgb(255,127,39);
+    height:200px;
+    padding-top:0px;
+    padding-bottom:0px;
+    padding-left:0px;
+    padding-right:0px;
+    transform: skewY(0deg);
+    overflow: hidden;
+    
+}
+.jumbotron-overlay{
+    background-color:rgba(0,0,0,.6);
+    box-shadow:0px 0px 3px 2px rgb(0,0,0);
+    transform: skewY(-20deg);
+    height: 300px;
+}
+.jumbotron h1{
+	font-size:45px;
+	text-align:center;
+	position:center;
+    padding-top:80px;
+    transform: skewY(20deg);
+}
+.chatZone{
+	background-color:rgba(0,0,0,0.3);
+	width:relative;
+	padding-top: 50px;
+	padding-bottom:50px;
+
+}
+  .userRow{
+    	width:relative;
+    	height:300px;
+    	padding-top:0px;
+    	padding-bottom:0px;
+    	padding-left:0px;
+    	padding-right:0px;
+    	font-size:25px;
+    	overflow:hidden;
+        margin-top: 120px;
+    }
+    .userRow-overlay{
+    	padding-top:50px;
+    	background-color:rgba(0,0,0,0.7);
+    	width:100%;
+    	height:300px;
+    	text-align:center;
+    	font-family:Century Gothic;
+    	border-radius:30px 30px 30px 30px;
+    	color:rgb(255,255,255);
+    }
+    .form-control{
+    	width:relative;
+    	margin-top:40px;
+
+    }
+    .namebar{
+    	width:relative;
+    	height:50px;
+    	background-color: rgb(255,255,255);
+    	border-radius:10px 10px 0px 0px;
+    	box-shadow:0px 0px 5px 0px rgb(0,0,0);
+    	padding-left: 0px;
+    	padding-right:0px;
+    	margin-bottom: 0px;
+    	padding-top:15px;
+    }
+    .btons{
+    	width:relative;
+    	position: right;
+    }
+    .namebar li{
+    	text-decoration:none;
+    	display:inline-block;
+    	cursor: pointer;
+    	padding-top:0px;
+    	padding-left:0px;
+    	padding-right:0px;
+    	padding-bottom: 0px;
+    }
+    .namebar li a{
+    	font-size:25px;
+    	text-decoration:none;
+    	color:rgb(255,0,0);
+    	padding-left:10px;
+    }
+    .namebar li a:hover{
+    	color:rgb(0,255,0);
+    }
+	#messageArea{
+		margin-top:100px;
+     display:none;
+     background-color:rgb(255,127,39);
+     color:rgb(0,0,0);
+     width:relative;
+     height:100%;
+     padding-top:0px;
+     padding-bottom: 0px;
+     padding-right: 0px;
+     padding-left: 0px;
+     box-shadow:0px 0px 10px 1px rgb(255,127,39);
+     border-radius:5px 5px 5px 5px;
+     font-family:Century Gothic;
+     text-align:left;
+     
+	}
+	#messageArea textarea{
+		background-color:rgb(255,255,255);
+		color:rgb(0,0,0);
+		text-transform: none;
+		font-family:Century Gothic;
+		font-size:18px;
+	}
+	.messageArea input{
+		margin-bottom:50px;
+		float:center;
+	}
+	.chatZone{
+		cursor:pointer;
+	}
+	.chatZone::-webkit-scrollbar-track
+         {
+         cursor:pointer;
+         background-color:rgb(0,0,0);
+
+         }
+     .chatZone::-webkit-scrollbar
+         {
+            cursor:pointer;
+         width: 7px;
+         background-color: rgb(255,255,255);
+         }
+    .chatZone::-webkit-scrollbar-thumb
+         {
+         cursor:pointer;
+         background-color:rgb(0,0,255);
+         -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.3);
+         }
+    .chatZone::-webkit-scrollbar-thumb:hover
+         {
+         background-color:rgb(0,255,0);
+         -webkit-box-shadow: inset 0 0 0px rgba(0,0,0,0.3);
+
+         }
+         .well h3{
+            text-transform: none;
+			color:rgb(0,0,0);
+         }
+         .well{
+            color:rgb(0,0,0);
+         	background-color:rgb(255,255,255);
+			font-family:Century Gothic;
+			text-align:center;
+			margin-top:50px;
+			font-size:16px;
+         }
+         .well ul{
+         	background-color:rgb(255,255,255);
+         	color:rgb(0,0,0);
+			font-family:Century Gothic;
+			text-align:center;
+			margin-top:50px;
+			text-transform: uppercase;
+			font-weight: 700;
+			font-size:16px;
+         }
+         #buttonSubmit:hover{
+          background-color:rgb(0,255,0);
+          box-shadow:0px 0px 2px 1px rgb(0,255,0);
+          border-radius:30px 30px 30px 30px;
+         }
+         #buttonSubmit{
+         	border-radius:30px 30px 30px 30px;
+         	box-shadow:0px 0px 2px 1px rgb(0,0,255);
+         	color:rgb(255,255,255);
+         	background-color: rgb(0,0,255);
+         	font-size:15px;
+
+         }
+         .scrollup a{
+    width: 50px;
+    height: 50px;
+    border-radius: 45px;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    font-size:20px;
+    padding-top:15px;
+    color: rgb(255,255,255);
+    cursor: pointer;
+    transform:rotate(180deg);
+    background-color:rgba(0,0,0,.5);
+    border:1px solid rgb(255,127,39);
+    z-index: 800;
+    transition: opacity .5s, background-color .5s;
+    -moz-transition: opacity .5s, background-color .5s;
+    -webkit-transition: opacity .5s, background-color .5s;
+    text-align:center;
+}
+     .scrollup a:hover{
+     	color:rgb(255,127,39);
+     	border:2px solid rgb(255,127,39);
+     	width: 60px;
+        height: 60px;
+        transform:rotate(360deg);
+     }
+     .textPlace{
+        width:relative;
+        min-height:40px;
+        border-radius: 15px 15px 15px 15px;
+        background-color: rgba(127,127,127,.5);
+        color:rgb(255,255,255);
+        font-family: Century Gothic;
+        padding-left: 3px;
+        box-shadow: 2px 2px 2px 1px rgba(8,8,8,.3);
+        text-align:center;
+        font-size:20px;
+        padding: 4px;
+        margin-bottom: 20px;
+     }
+     .textPlace:hover{
+        padding: 9px;
+        min-height:45px;
+        background-color:rgb(255,255,255);
+        color:rgb(0,0,0);
+        box-shadow:2px 2px 2px 1px rgb(255,255,255);
+     }
+     .footnote{
+     	margin-top: 150px;
+     	width:100%;
+     	height:40px;
+     	position: bottom;
+     	bottom:0;
+     	padding-top:5px;
+     	background-color: rgba(0,0,0,.8);
+        color:rgb(255,255,255);
+        text-align:center;
+        font-size:12px;
+        font-family: Century Gothic;
+
+     }
+</style>
+</head>
+<body>
+	<div class="jumbotron col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="jumbotron-overlay col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<h1><span class="glyphicon glyphicon-user"></span>&nbspONE TO ONE CHAT&nbsp<span class="glyphicon glyphicon-user"></span></h1>
+	</div></div>
+<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+     
+     <div id="userFormArea" class="userRow col-lg-12 col-md-12 col-sm-12 col-xs-12">
+     	<div class="userRow-overlay  col-lg-12 col-md-12 col-sm-12 col-xs-12">
+     		<form id="userForm" action="nicknames.php" method="post">
+				<div class="form-group">
+					<label>Create Chat Name:</label>
+					<input class="form-control" id="username" name="nickname" placeholder="Your nickname goes here" required="" />
+					<br/>
+					<input type="submit" class="btn btn-md btn-success" value="Start Chat"/>
+				</div></form></div></div>
+
+
+	<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" id="messageArea">
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<div class="well">
+				<h3><span class="glyphicon glyphicon-user"></span>&nbspOnline Users</h3>
+				<hr/>
+				<ul class="list-group" id="users"></ul>
+			</div>
+		</div>
+        <div class="namebar col-lg-8 col-md-8 col-sm-8 col-xs-8" id="namebar">
+        	<li class="btons col-lg-offset-10 col-lg-2">
+        		<a href="#chat"><span class="glyphicon glyphicon-chevron-down"></span></a>
+        		<a onclick="logout()"><span class="glyphicon glyphicon-log-out"></span></a>
+
+        	</li>
+        	
+        	
+        </div>
+		<div class="chatZone col-lg-8 col-md-8 col-sm-8 col-xs-8">
+		
+			<div class="chat" id="chat">
+			</div>
+			<form id="messageForm">
+				<div class="form-group">
+					<label style="font-size:20px;color:rgb(255,255,255);">Enter Message&nbsp:</label>
+					<textarea class="form-control" id="message" placeholder="Your text goes here" required=""></textarea>
+					<br/>
+					<input id="buttonSubmit" type="submit" class="col-lg-offset-9 col-lg-2 col-md-offset-9 col-md-2 col-sm-offset-1 col-sm-10 col-xs-offset-2 col-xs-8 " value="Send"/>
+				</div></form>
+<div class="scrollup">
+		<a href="#namebar" ><span class="glyphicon glyphicon-eject"></span></a>
+	</div>
+			</div>
+
+		
+	</div>
+		</div>
+<div class="footnote col-lg-12 col-md-12 col-sm-12 col-xs-12"><p>Copyright &copy2018&nbsp | &nbspProperty of Kambreezy&nbsp|&nbspAll Rights Reserved.</p></div>
+	<script>
+		$(function(){
+
+			var socket = io.connect();
+			var $messageForm= $('#messageForm');
+			var $message= $('#message');
+			var $chat= $('#chat');//chatwindow
+			var $userFormArea= $('#userFormArea');
+			var $userForm= $('#userForm');
+			var $messageArea= $('#messageArea');
+			var $users= $('#users');
+			var $username= $('#username');
+
+//when message is submitted
+		$messageForm.submit(function(e){
+        e.preventDefault();
+        socket.emit('send message', $message.val());
+        $message.val('');
+    });
+        
+ //user form submission
+        $userForm.submit(function(e){
+        	e.preventDefault();
+        	socket.emit('new user', $username.val(), function(data){
+        		if(data){
+        			$userFormArea.hide();
+        			$messageArea.show();
+        		}
+        	});
+        	$username.val('');
+        });
+			
+			socket.on('new message', function(data){
+				$chat.append('<div class="textPlace" id="textPlace"><strong>'+data.user+'</strong>:&nbsp&nbsp&nbsp'+data.msg+'<span class="glyphicon glyphicon-trash" onclick="erase()" style="float:right;padding-right:10px;padding:10px;color:rgb(0,0,0);"></span></div>');
+			});
+
+//Get users
+			socket.on('get users', function(data){
+				var html='';
+				for(i = 0;i < data.length;i++){
+					html +='<li class="list-group-item">' +data[i]+'</li>';
+				}
+				$users.html(html);
+			});
+});
+
+	</script>
+
+<script type="text/javascript">
+    function erase(){
+        var texts = document.getElementById('textPlace');
+        texts.parentNode.removeChild(texts);
+    };
+    //logout
+    function logout(){
+     alert("You are about to logout.Do you want to Proceed?");
+        window.close();
+     
+    };
+</script>
+</body>
+</html>

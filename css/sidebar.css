@@ -1,0 +1,55 @@
+body,html{
+	margin:0;
+	padding: 0;
+	height:100%;
+	width: 100%;
+	font-family: sans-serif;
+}
+.sidebar{
+	float: left;
+	width: auto;
+	height: 750px;
+	
+	background-color: black;
+	overflow: hidden;
+}
+.side{
+	margin-left: 0;
+}
+.sidebar ul{
+margin: 0;	
+padding:0;
+}
+.sidebar ul li{
+	list-style: none;
+}
+.sidebar ul li a{
+text-decoration: none;
+color: white;
+height:80px;
+width:100%;
+font-size:40px;
+line-height:80px;
+text-align: center;
+display: block; 
+
+}
+.sidebar ul li a:hover{
+background-color:#34495e;
+}
+.btn{
+	float: left;
+	padding: 0 10px;
+	font-size: 40px;
+	text-decoration: none;
+	color: #2c3e50;
+	font-family: Agency FB;
+    cursor: pointer;
+}
+.btn:before{
+	content: '\f20d';
+}
+
+.btnc:before{
+	content: '\f12a';
+}

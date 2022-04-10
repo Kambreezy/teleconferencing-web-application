@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Room</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/stylez.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="css/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="bundle.js"></script>
+<style type="text/css">
+	body{
+		background-color: rgb(0,0,0);
+	}
+</style>
+<body>
+<!--titl-->
+<div class="titleContainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="titleStyle">
+	<p>VIDEO CHAT</p>
+</div>
+</div>
+
+<!--menu-->
+<nav class="navbarCon nav-navbar navbar-inverse">
+	<ul type="none">
+		<li><a href="index.html"><span class="glyphicon glyphicon-refresh"></span>&nbspRefresh</a></li>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+		<li><a><span class="glyphicon glyphicon-log-out"></span>&nbspLog out</a></li>
+	</ul>
+</nav>
+
+<!--content layout-->
+<div class="videoArea col-lg-offset-1 col-lg-10 col-md-offset-2 col-md-8 col-sm-12 col-xs-12" id="canvas">
+	<div class="Username col-lg-12">
+		<p><label><span class="glyphicon glyphicon-user"></span>&nbspUsername:</label></p>
+		<label><textarea placeholder="Your Id here" id="username"></textarea></label>
+	</div>
+	<div class="Friend col-lg-12">
+		<p><label><span class="glyphicon glyphicon-user"></span>&nbspFriend:</label></p>
+		<label><textarea placeholder="Friend Id here" id="friend"></textarea></label>
+	</div>
+	<div class="Connect col-lg-offset-5 col-lg-2" id="connect">
+		<p>Connect</p>
+	</div>
+
+	<div class="videoAreaOverlay" id="video">
+		<p>Your streaming will be displayed here. Please Enable your webcam.&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-camera" onclick="clean();"></span></p>
+	</div></div>
+
+	
+<div class="footing">
+	<p>Copyright&nbsp&copy&nbsp2018.&nbsp|&nbspAll Rights Reserved&nbsp|&nbspProperty of Kambreezy</p>
+</div>
+
+<!--javascript-->
+<script type="text/javascript">
+	function clean(){
+		  var erase = document.getElementById('video');
+        erase.parentNode.removeChild(erase);//relation
+	}
+
+	navigator.getUserMedia = navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia;
+                         
+navigator.webkitGetUserMedia({ video:true, audio:false},
+var width = 0, height = 0;
+	var canvas = document.getElementById('canvas'), 
+	ctx = canvas.getContent('2d');
+	document.body.appendChild(canvas);
+
+	var video = document.createElement('video'),
+	track;
+	video.setAttribute('autoplay',true);
+
+	window.vid = video;
+
+	function getwebcam(){
+		navigator.getUserMedia({video: true,
+			audio:false}, function(stream){
+				video.src = window.URL.createObjectURL(stream);
+				track = stream.getTracks()[0];
+			}, function(e){
+				console.error('Rejected!', e);
+			});
+	}
+    getwebcam();
+
+	var rotation = 0,
+	loopFrame,
+	centerX,
+	centerY,
+	twoPI = Math.PI * 2;
+
+	function loop(){
+		loopFrame = requestAnimationFrame(loop);
+
+		ctx.save();
+
+		ctx.globalAlpha = 0.1;
+		ctx.drawImage(video, 0, 0, width, height);
+
+		ctx.restore();
+	}
+    function startLoop(){
+    	loopFrame = loopFrame || requestAnimationFrame(loop); 
+    }
+     video.addEventListener('loadedmetadata',function(){
+     	width = canvas.width = video.videoWidth;
+     	height = canvas.height = video.videoHeight;
+     	centerX = width / 2;
+     	centerY = height / 2;
+     	startLoop();
+     });
+
+     canvas.addEventListener('click',function(){
+     	if (track){
+     		if (track.stop) { track.stop();}
+     		track = null;
+     	}else {
+     		getWebcam();
+     	}
+     });
+();
+</script>
+
+</body>
+</html>
